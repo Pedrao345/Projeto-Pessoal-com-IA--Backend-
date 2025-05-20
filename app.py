@@ -41,7 +41,7 @@ def adivinhar_personagem(dicas):
         """
     # --- CHANGE STARTS HERE ---
     # Now you can directly use genai.GenerativeModel
-    model = genai.GenerativeModel("gemini-1.5-flash") # Using a more up-to-date model name
+    model = genai.GenerativeModel("gemini-2.0-flash") # Using a more up-to-date model name
     response = model.generate_content(
         contents=prompt,
         generation_config={
