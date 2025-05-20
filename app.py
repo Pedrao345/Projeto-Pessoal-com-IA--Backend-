@@ -1,7 +1,7 @@
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import google.generativeai as genai
+from google import genai
 import os
 from dotenv import load_dotenv 
 import json
@@ -50,9 +50,7 @@ def adivinhar_personagem(dicas):
 
     response = json.loads(response.text)
     return response
-@app.route('/', methods=['GET'])
-def index():
-    return jsonify({'API DBZ FUNCIONANDO!'})
+
 @app.route('/personagem', methods=['POST'])
 def pesquisar_personagem():
     try:
