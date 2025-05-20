@@ -50,7 +50,9 @@ def adivinhar_personagem(dicas):
 
     response = json.loads(response.text)
     return response
-
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({'API DBZ FUNCIONANDO!'})
 @app.route('/personagem', methods=['POST'])
 def pesquisar_personagem():
     try:
