@@ -1,24 +1,23 @@
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from google import genai
+import google.generativeai as genai # Keep this import as is
 import os
-from dotenv import load_dotenv 
+from dotenv import load_dotenv
 import json
 
 load_dotenv()
 
 app = Flask(__name__)
-
-
 CORS(app)
 
 API_KEY = os.getenv("GOOGLE_API_KEY")
 
-client = genai.Client(api_key=API_KEY)
+# --- CHANGE STARTS HERE ---
+# Initialize the generative AI library
+genai.configure(api_key=API_KEY)
+# --- CHANGE ENDS HERE ---
 
 def adivinhar_personagem(dicas):
-
     prompt = f"""
         Tente descobrir o personagem de Dragon Ball com as dicas que forem dadas: {dicas}.
         Em caso de dicas que sejam inapropriadas, por exemplo, de cunho sexual,
@@ -38,15 +37,18 @@ def adivinhar_personagem(dicas):
                 "dica 3"
             ],
             "nivel_de_poder": "nível de poder do personagem"
-        }}   
+        }}
         """
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt, 
-        config={
-        "response_mime_type": "application/json",
+    # --- CHANGE STARTS HERE ---
+    # Now you can directly use genai.GenerativeModel
+    model = genai.GenerativeModel("gemini-1.5-flash") # Using a more up-to-date model name
+    response = model.generate_content(
+        contents=prompt,
+        generation_config={
+            "response_mime_type": "application/json",
         }
     )
+    # --- CHANGE ENDS HERE ---
 
     response = json.loads(response.text)
     return response
