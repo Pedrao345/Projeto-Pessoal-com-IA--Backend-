@@ -22,7 +22,7 @@ def adivinhar_personagem(dicas):
         Tente descobrir o personagem de Dragon Ball com as dicas que forem dadas: {dicas}.
         Em caso de dicas que sejam inapropriadas, por exemplo, de cunho sexual,
         nome do personagem, ignore-os, não gere o personagem e alerte o usuário sobre o uso responsável
-        da ferramenta de adivinhação de personagem mantendo a mesma estrutura do JSON.
+        da ferramenta de adivinhação de personagem e mande uma mensagem dizendo "Não é assim que se joga" mantendo a mesma estrutura do JSON.
         O personagem pode ser de qualquer raça do universo de dragon ball, mas pode ser bem específico para adivinhar o personagem.
         Também pode ser de qualquer saga de dragon ball
         Retorne apenas as seguintes informações: o nome do personagem, idade oficial do personagem, episódio em que apareceu pela primeira vez, e o nível de poder oficial.
